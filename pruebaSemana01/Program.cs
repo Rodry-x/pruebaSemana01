@@ -14,7 +14,8 @@
                 Console.WriteLine("¿Cómo deseas insertar los números en la lista?");
                 Console.WriteLine("1. Insertar al inicio");
                 Console.WriteLine("2. Insertar al final");
-                Console.Write("Elige una opción (1 o 2): ");
+                Console.WriteLine("3. Insertar en orden ascendente");
+                Console.Write("Elige una opción (1, 2 o 3): ");
                 string? entradaOpcion = Console.ReadLine();
 
                 if (string.IsNullOrWhiteSpace(entradaOpcion) || entradaOpcion == null)
@@ -26,16 +27,16 @@
                 try
                 {
                     opcion = int.Parse(entradaOpcion);
-                    if (opcion != 1 && opcion != 2)
+                    if (opcion < 1 || opcion > 3)
                     {
-                        Console.WriteLine("Solo puedes elegir 1 o 2.");
+                        Console.WriteLine("Solo puedes elegir 1, 2 o 3.");
                         continue;
                     }
                     break;
                 }
                 catch
                 {
-                    Console.WriteLine("No se acepta letras u símbolos diferentes. Por favor, ingresa 1 o 2.");
+                    Console.WriteLine("No se acepta letras u símbolos diferentes. Por favor, ingresa 1, 2 o 3.");
                 }
             }
 
@@ -106,6 +107,13 @@
                         lista.InsertarAlFinal(valor);
                     }
                     Console.WriteLine("Valores insertados al final de la lista:");
+                    break;
+                case 3:
+                    foreach (var valor in valores)
+                    {
+                        lista.InsertarAscendente(valor);
+                    }
+                    Console.WriteLine("Valores insertados en orden ascendente:");
                     break;
             }
 

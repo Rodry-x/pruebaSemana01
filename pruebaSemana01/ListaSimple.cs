@@ -56,5 +56,32 @@
                 actual = actual.Siguiente;
             }
         }
+
+        public void InsertarAscendente(TipoDato dato)
+        {
+            Nodo<TipoDato> nuevoNodo = new Nodo<TipoDato>(dato);
+
+            // Si la lista está vacía o el nuevo dato es menor que la cabeza
+            if (cabeza == null || Comparar(dato, cabeza.Dato) < 0)
+            {
+                nuevoNodo.Siguiente = cabeza;
+                cabeza = nuevoNodo;
+                return;
+            }
+
+            Nodo<TipoDato> actual = cabeza;
+            while (actual.Siguiente != null && Comparar(dato, actual.Siguiente.Dato) >= 0)
+            {
+                actual = actual.Siguiente;
+            }
+            nuevoNodo.Siguiente = actual.Siguiente;
+            actual.Siguiente = nuevoNodo;
+        }
+
+        // Método auxiliar para comparar dos elementos
+        private int Comparar(TipoDato a, TipoDato b)
+        {
+            return Comparer<TipoDato>.Default.Compare(a, b);
+        }
     }
 }
