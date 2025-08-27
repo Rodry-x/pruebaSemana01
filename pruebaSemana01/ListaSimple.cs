@@ -83,5 +83,45 @@
         {
             return Comparer<TipoDato>.Default.Compare(a, b);
         }
+
+        public int ContarElementos()
+        {
+            int contador = 0;
+            Nodo<TipoDato> actual = cabeza;
+            while (actual != null)
+            {
+                contador++;
+                actual = actual.Siguiente;
+            }
+            return contador;
+        }
+
+        public int SumarElementos()
+        {
+            int suma = 0;
+            Nodo<TipoDato> actual = cabeza;
+            while (actual != null)
+            {
+                suma += Convert.ToInt32(actual.Dato);
+                actual = actual.Siguiente;
+            }
+            return suma;
+        }
+
+        public TipoDato? ObtenerPrimero()
+        {
+            return cabeza != null ? cabeza.Dato : default;
+        }
+
+        public TipoDato? ObtenerUltimo()
+        {
+            if (cabeza == null) return default;
+            Nodo<TipoDato> actual = cabeza;
+            while (actual.Siguiente != null)
+            {
+                actual = actual.Siguiente;
+            }
+            return actual.Dato;
+        }
     }
 }
