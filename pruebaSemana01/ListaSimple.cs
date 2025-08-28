@@ -2,7 +2,7 @@
 {
     internal class ListaSimple<TipoDato>
     {
-        private Nodo<TipoDato> cabeza;
+        private Nodo<TipoDato> cabeza; // Nodo que representa la cabeza de la lista
         public ListaSimple()
         {
             cabeza = null;
@@ -59,7 +59,7 @@
 
         public void InsertarAscendente(TipoDato dato)
         {
-            Nodo<TipoDato> nuevoNodo = new Nodo<TipoDato>(dato);
+            Nodo<TipoDato> nuevoNodo = new Nodo<TipoDato>(dato); // Crear un nuevo nodo
 
             // Si la lista está vacía o el nuevo dato es menor que la cabeza
             if (cabeza == null || Comparar(dato, cabeza.Dato) < 0)
@@ -69,7 +69,9 @@
                 return;
             }
 
-            Nodo<TipoDato> actual = cabeza;
+            Nodo<TipoDato> actual = cabeza; // Nodo para recorrer la lista
+
+            // Encontrar la posición correcta para insertar el nuevo nodo
             while (actual.Siguiente != null && Comparar(dato, actual.Siguiente.Dato) >= 0)
             {
                 actual = actual.Siguiente;
